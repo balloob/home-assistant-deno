@@ -13,7 +13,7 @@ _Experiment playing with Deno and how to organize a package._
    deno run --allow-net --allow-write https://raw.githubusercontent.com/balloob/home-assistant-deno/master/login.ts
    ```
 
-   Authentication is stored in the current directory in a file called `hass.auth`. Each script will try reading this file.
+   Authentication is stored in the current directory in a file called `hass.auth`.
 
    _This script needs write access to be able to write the authentication file._
 
