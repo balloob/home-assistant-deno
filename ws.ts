@@ -257,8 +257,11 @@ export {
   getStates,
   getConfig,
   getServices,
+  configColl,
   subscribeConfig,
+  entitiesColl,
   subscribeEntities,
+  servicesColl,
   subscribeServices,
 } from "https://unpkg.com/home-assistant-js-websocket@5/dist/index.js";
 export {
