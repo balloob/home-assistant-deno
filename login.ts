@@ -21,7 +21,7 @@ for await (const suggestedHost of readLines(Deno.stdin)) {
     parsed = new URL(suggestedHost);
   } catch {
     console.error(
-      "Invalid URL. Make sure you include the protocol http: or https:"
+      "Invalid URL. Make sure you include the protocol http: or https:",
     );
     continue;
   }
@@ -29,7 +29,7 @@ for await (const suggestedHost of readLines(Deno.stdin)) {
   if (parsed !== undefined) {
     if (parsed.protocol !== "http:" && parsed.protocol !== "https:") {
       console.error(
-        "Home Assistant url needs to start with 'http://' or 'https://'"
+        "Home Assistant url needs to start with 'http://' or 'https://'",
       );
     } else {
       host = getHassHost(parsed.toString());

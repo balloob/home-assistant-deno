@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - dev
+      - master
+  pull_request:
+    branches:
+      - dev
+      - master
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out files from GitHub
+        uses: actions/checkout@v2
+      - name: Setup Deno
+        uses: denolib/setup-deno@master
+      - name: Check formatting
+        run: deno fmt --check
+      - name: Check compiles
+        run: deno run --reload mod.ts
