@@ -40,8 +40,8 @@ export function getHassHost(url: string): string {
 /**
  * Get a connection.
  *
- * 1. Look at passed in arguments --host and --token
- * 2. See if we have read access and if so check for profile
+ * 1. Look at passed in arguments --host and --token.
+ * 2. See if we have read access and if so check for stored profile.
  */
 export async function getConnection(): Promise<Connection> {
   let conn: Connection | undefined;

@@ -24,18 +24,16 @@ _Experiment playing with Deno and how to organize a package._
    ```ts
    import {
      getConnection,
-     subscribeEntities,
      HassEntities,
+     getStates,
    } from "https://raw.githubusercontent.com/balloob/home-assistant-deno/master/mod.ts";
 
    const conn = await getConnection();
-
-   subscribeEntities(conn, (entities: HassEntities) => {
-     for (const stateObj of Object.values(entities)) {
-       console.log(stateObj.entity_id, stateObj.state);
-     }
-     conn.close();
-   });
+   const states: HassEntities = await getStates(conn);
+   for (const stateObj of Object.values(states)) {
+     console.log(stateObj.entity_id, stateObj.state);
+   }
+   conn.close();
    ```
 
 4. Run it:
@@ -44,7 +42,7 @@ _Experiment playing with Deno and how to organize a package._
    deno --allow-read --allow-net my-script.ts
    ```
 
-   This will print all entity IDs and their current state to your console whenever a state changes.
+   This will print all entity IDs and their current state.
 
    _This script needs read access to be able to read the authentication file._
 
