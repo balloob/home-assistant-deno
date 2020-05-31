@@ -72,7 +72,7 @@ export class JSWebSocket {
           console.error("[WS] Failed to connect", err);
         }
         this.emit("error", {});
-      }
+      },
     );
   }
 
@@ -88,7 +88,7 @@ export class JSWebSocket {
 
   addEventListener<E extends WSEventType>(
     type: E,
-    handler: (ev: WSEvents[E]) => unknown
+    handler: (ev: WSEvents[E]) => unknown,
   ) {
     let handlers = this._listeners[type];
     if (!handlers) {
@@ -99,7 +99,7 @@ export class JSWebSocket {
 
   removeEventListener<E extends WSEventType>(
     type: E,
-    handler: (ev: WSEvents[E]) => unknown
+    handler: (ev: WSEvents[E]) => unknown,
   ) {
     const handlers = this._listeners[type];
     if (!handlers) {
@@ -156,7 +156,7 @@ export function createSocket(options: ConnectionOptions): Promise<JSWebSocket> {
   function connect(
     triesLeft: number,
     promResolve: (socket: JSWebSocket) => void,
-    promReject: (err: Error) => void
+    promReject: (err: Error) => void,
   ) {
     if (DEBUG) {
       console.log("[WS - Auth Phase] New connection", url);
@@ -236,7 +236,7 @@ export function createSocket(options: ConnectionOptions): Promise<JSWebSocket> {
 
 export function createConnection(
   endpoint: string,
-  token: string
+  token: string,
 ): Promise<Connection> {
   const auth = createLongLivedTokenAuth(endpoint, token);
 
