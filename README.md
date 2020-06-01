@@ -1,6 +1,6 @@
 # Home Assistant Deno
 
-Helpers to easily control Home Assistant from Deno.
+Helpers to easily control [Home Assistant](https://www.home-assistant.io/) from Deno.
 
 _Experiment playing with Deno and how to organize a package._
 
