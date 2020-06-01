@@ -1,4 +1,5 @@
-// File exists so we can verify example in readme works.
+// Print entity states.
+// deno run --allow-net --allow-read https://raw.githubusercontent.com/balloob/home-assistant-deno/master/examples/print-entity-states.ts --entity light.kitchen_lights --state on
 import {
   getConnection,
   HassEntities,
