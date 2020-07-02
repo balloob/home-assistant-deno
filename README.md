@@ -10,7 +10,7 @@ _Experiment playing with Deno and how to organize a package._
 2. Run the login script:
 
    ```bash
-   deno run --allow-net --allow-write https://raw.githubusercontent.com/balloob/home-assistant-deno/master/login.ts
+   deno run --allow-net --allow-write --allow-read https://raw.githubusercontent.com/balloob/home-assistant-deno/master/login.ts
    ```
 
    Authentication is stored in the current directory in a file called `hass.auth`.

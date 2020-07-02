@@ -28,7 +28,7 @@ export function getHassHost(url: string): string {
   temp.hash = "";
 
   const processedHost = temp.hostname !== "localhost"
-    ? temp.hostname
+    ? temp.host
     : temp.port
     ? `127.0.0.1:${temp.port}`
     : "127.0.0.1";

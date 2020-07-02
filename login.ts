@@ -1,5 +1,5 @@
 // Helper to store auth credentials
-
+// deno run --allow-net --allow-read --allow-write https://raw.githubusercontent.com/balloob/home-assistant-deno/master/login.ts
 import { storeConnection, getHassHost } from "./profile.ts";
 import {
   createConnection,
@@ -39,7 +39,7 @@ for await (const suggestedHost of readLines(Deno.stdin)) {
 
   console.log("Please enter your Home Assistant host:");
 }
-
+console.log("");
 console.log("Long lived access token:");
 for await (const suggestedToken of readLines(Deno.stdin)) {
   // Handle accidental enter
