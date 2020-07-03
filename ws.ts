@@ -171,7 +171,6 @@ export function createSocket(options: ConnectionOptions): Promise<JSWebSocket> {
       // If we are in error handler make sure close handler doesn't also fire.
       socket.removeEventListener("close", closeMessage);
       if (invalidAuth) {
-        promReject(new ConnectionError(ERR_INVALID_AUTH));
         return;
       }
 
@@ -200,7 +199,7 @@ export function createSocket(options: ConnectionOptions): Promise<JSWebSocket> {
       }
       switch (message.type) {
         case MSG_TYPE_AUTH_INVALID:
-          invalidAuth = true;
+          promReject(new ConnectionError(ERR_INVALID_AUTH));
           socket.close();
           break;
 
