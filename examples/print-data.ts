@@ -1,17 +1,18 @@
 // Print data
 // deno run --allow-net --allow-read https://raw.githubusercontent.com/balloob/home-assistant-deno/master/examples/print-data.ts --data area_registry
 import { parse } from "https://deno.land/std@0.54.0/flags/mod.ts";
-import {
-  getConnection,
-} from "https://raw.githubusercontent.com/balloob/home-assistant-deno/master/mod.ts";
+import { getConnection } from "https://raw.githubusercontent.com/balloob/home-assistant-deno/master/mod.ts";
 
 const TYPES: { [key: string]: string } = {
   states: "get_states",
   config: "get_config",
   services: "get_services",
   user: "auth/current_user",
+  // deno-lint-ignore camelcase
   area_registry: "config/area_registry/list",
+  // deno-lint-ignore camelcase
   device_registry: "config/device_registry/list",
+  // deno-lint-ignore camelcase
   entity_registry: "config/entity_registry/list",
 };
 

@@ -3,8 +3,8 @@
 import { parse } from "https://deno.land/std@0.54.0/flags/mod.ts";
 import {
   getConnection,
-  subscribeEntities,
   HassEntities,
+  subscribeEntities,
 } from "https://raw.githubusercontent.com/balloob/home-assistant-deno/master/mod.ts";
 
 const args = parse(Deno.args);

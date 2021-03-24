@@ -2,8 +2,8 @@
 // deno run --allow-net --allow-read https://raw.githubusercontent.com/balloob/home-assistant-deno/master/examples/print-entity-states.ts
 import {
   getConnection,
-  HassEntities,
   getStates,
+  HassEntities,
 } from "https://raw.githubusercontent.com/balloob/home-assistant-deno/master/mod.ts";
 
 const conn = await getConnection();

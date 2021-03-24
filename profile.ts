@@ -1,8 +1,7 @@
-import { parseArgs, readJsonSync, writeJsonSync } from "./deps.ts";
+import { parseArgs } from "./deps.ts";
 import {
-  createConnection,
   Connection,
-  ConnectionError,
+  createConnection,
   ERR_CANNOT_CONNECT,
   ERR_INVALID_AUTH,
 } from "./ws.ts";
@@ -52,7 +51,7 @@ export async function getConnection(): Promise<Connection> {
       conn = await getProfileConnection();
     }
   } catch (err) {
-    if (err instanceof ConnectionError) {
+    if ("code" in err) {
       if (err.code == ERR_CANNOT_CONNECT) {
         console.error("Unable to connect. Did you run Deno with --allow-net?");
         Deno.exit(1);
@@ -71,7 +70,7 @@ export async function getConnection(): Promise<Connection> {
       "No connection specified. Specify a connection by passing --host and --token",
     );
     console.error(
-      "Or login to store credentials: deno run --allow-net --allow-write https://raw.githubusercontent.com/balloob/home-assistant-deno/master/login.ts",
+      "Or login to store credentials: deno run --allow-net --allow-write --allow-read https://raw.githubusercontent.com/balloob/home-assistant-deno/master/login.ts",
     );
     Deno.exit(1);
   }
@@ -94,7 +93,7 @@ export async function getArgsConnection(): Promise<Connection | undefined> {
 }
 
 export async function getProfileConnection(): Promise<Connection | undefined> {
-  const defaultProfile = getProfiles().default;
+  const defaultProfile = (await getProfiles()).default;
 
   if (!defaultProfile) {
     return undefined;
@@ -103,26 +102,28 @@ export async function getProfileConnection(): Promise<Connection | undefined> {
   return await createConnection(defaultProfile.host, defaultProfile.token);
 }
 
-export async function storeConnection(
-  host: string,
-  token: string,
-): Promise<void> {
-  const profiles = getProfiles();
+export async function storeConnection(host: string, token: string): void {
+  const profiles = await getProfiles();
   profiles["default"] = {
     host,
     token,
     type: "long_lived_access_token",
   };
-  writeJsonSync(PROFILE_FILE, profiles, { spaces: 2 });
+  await Deno.writeTextFile(
+    PROFILE_FILE,
+    JSON.stringify(profiles, undefined, 2),
+  );
 }
 
-function getProfiles(): { [name: string]: Profile } {
+async function getProfiles(): Promise<{ [name: string]: Profile }> {
+  let raw;
   try {
-    return readJsonSync(PROFILE_FILE) as any;
+    raw = await Deno.readTextFile(PROFILE_FILE);
   } catch (err) {
     if (err instanceof Deno.errors.PermissionDenied) {
       throw err;
     }
     return {};
   }
+  return JSON.parse(raw);
 }

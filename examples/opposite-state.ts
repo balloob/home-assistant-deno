@@ -3,11 +3,11 @@
 // deno run --allow-net --allow-read https://raw.githubusercontent.com/balloob/home-assistant-deno/master/examples/opposite-state.ts --from light.kitchen_lights --to light.bed_lights
 import { parse } from "https://deno.land/std@0.54.0/flags/mod.ts";
 import {
+  callService,
   getConnection,
-  subscribeEntities,
   HassEntities,
   HassEntity,
-  callService,
+  subscribeEntities,
 } from "https://raw.githubusercontent.com/balloob/home-assistant-deno/master/mod.ts";
 
 const args = parse(Deno.args);

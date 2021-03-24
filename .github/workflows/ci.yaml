@@ -20,5 +20,7 @@ jobs:
         uses: denolib/setup-deno@master
       - name: Check formatting
         run: deno fmt --check
+      - name: Check formatting
+        run: deno lint --unstable
       - name: Check compiles
         run: deno run --reload mod.ts
