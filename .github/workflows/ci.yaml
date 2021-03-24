@@ -11,7 +11,7 @@ on:
       - master
 
 jobs:
-  lint:
+  ci:
     runs-on: ubuntu-latest
     steps:
       - name: Check out files from GitHub
@@ -20,7 +20,7 @@ jobs:
         uses: denolib/setup-deno@master
       - name: Check formatting
         run: deno fmt --check
-      - name: Check formatting
+      - name: Lint
         run: deno lint --unstable
       - name: Check compiles
         run: deno run --reload mod.ts
