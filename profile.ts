@@ -26,12 +26,11 @@ export function getHassHost(url: string): string {
   temp.search = "";
   temp.hash = "";
 
-  const processedHost =
-    temp.hostname !== "localhost"
-      ? temp.host
-      : temp.port
-      ? `127.0.0.1:${temp.port}`
-      : "127.0.0.1";
+  const processedHost = temp.hostname !== "localhost"
+    ? temp.host
+    : temp.port
+    ? `127.0.0.1:${temp.port}`
+    : "127.0.0.1";
 
   return `${temp.protocol}//${processedHost}`;
 }
@@ -68,10 +67,10 @@ export async function getConnection(): Promise<Connection> {
 
   if (conn === undefined) {
     console.error(
-      "No connection specified. Specify a connection by passing --host and --token"
+      "No connection specified. Specify a connection by passing --host and --token",
     );
     console.error(
-      "Or login to store credentials: deno run --allow-net --allow-write --allow-read https://raw.githubusercontent.com/balloob/home-assistant-deno/master/login.ts"
+      "Or login to store credentials: deno run --allow-net --allow-write --allow-read https://raw.githubusercontent.com/balloob/home-assistant-deno/master/login.ts",
     );
     Deno.exit(1);
   }
@@ -112,7 +111,7 @@ export async function storeConnection(host: string, token: string) {
   };
   await Deno.writeTextFile(
     PROFILE_FILE,
-    JSON.stringify(profiles, undefined, 2)
+    JSON.stringify(profiles, undefined, 2),
   );
 }
 
