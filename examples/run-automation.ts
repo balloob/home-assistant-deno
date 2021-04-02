@@ -50,7 +50,7 @@ const conn = await getConnection();
 
 try {
   await conn.subscribeMessage(
-    async (triggerResultMsg: any) => {
+    async (triggerResultMsg: Record<string, unknown>) => {
       if (automation.condition) {
         let result;
 
@@ -87,7 +87,7 @@ try {
       type: "subscribe_trigger",
       trigger: automation.trigger,
     },
-    null,
+    null
   );
 } catch (err) {
   console.error("Error setting up automation");
