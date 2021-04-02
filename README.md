@@ -8,21 +8,30 @@ _Experiment playing with Deno and how to organize a package._
 ## Getting Started
 
 1. [Install Deno](https://deno.land/#installation)
-2. Run the login script:
+2. Run the login script to authenticate with your Home Assistant instance. Your authentication is stored in the current directory in a file called `hass.auth`.
 
    ```bash
    deno run --allow-net --allow-write --allow-read https://raw.githubusercontent.com/balloob/home-assistant-deno/master/login.ts
    ```
-
-   Authentication is stored in the current directory in a file called
-   `hass.auth`.
 
    _This script needs write access to be able to write the authentication file._
 
    _This script needs network access to be able to connect to your Home
    Assistant instance to verify the credentials._
 
-3. Create a new file `print-entity-states.ts` with content:
+3. Try one of the example scripts. This script will connect to your Home Assistant instance, fetch all the available
+   entity states and print them.
+
+   ```bash
+   deno run --allow-net --allow-read https://raw.githubusercontent.com/balloob/home-assistant-deno/master/examples/print-entity-states.ts
+   ```
+
+   _This script needs read access to be able to read the authentication file._
+
+   _This script needs network access to be able to connect to your Home
+   Assistant instance._
+
+4. Now let's create a script ourselves. Create a new file `print-entity-states.ts` with content:
 
    ```ts
    import {
@@ -31,27 +40,23 @@ _Experiment playing with Deno and how to organize a package._
      HassEntities,
    } from "https://raw.githubusercontent.com/balloob/home-assistant-deno/master/mod.ts";
 
+   // Get the connection
    const conn = await getConnection();
+   // Get the states
    const states: HassEntities = await getStates(conn);
+   // Print the states
    for (const stateObj of Object.values(states)) {
      console.log(stateObj.entity_id, stateObj.state);
    }
+   // Close the connection
    conn.close();
    ```
 
-4. Run it:
+5. Run it:
 
    ```bash
-   deno --allow-read --allow-net my-script.ts
+   deno --allow-read --allow-net print-entity-states.ts
    ```
-
-   This will connect to your Home Assistant instance, fetch all the available
-   entity states and print them.
-
-   _This script needs read access to be able to read the authentication file._
-
-   _This script needs network access to be able to connect to your Home
-   Assistant instance._
 
 ## Example: block until state
 
