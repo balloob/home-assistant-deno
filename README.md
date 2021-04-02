@@ -8,7 +8,9 @@ _Experiment playing with Deno and how to organize a package._
 ## Getting Started
 
 1. [Install Deno](https://deno.land/#installation)
-2. Run the login script to authenticate with your Home Assistant instance. Your authentication is stored in the current directory in a file called `hass.auth`.
+2. Run the login script to authenticate with your Home Assistant instance. Your
+   authentication is stored in the current directory in a file called
+   `hass.auth`.
 
    ```bash
    deno run --allow-net --allow-write --allow-read https://raw.githubusercontent.com/balloob/home-assistant-deno/master/login.ts
@@ -19,8 +21,8 @@ _Experiment playing with Deno and how to organize a package._
    _This script needs network access to be able to connect to your Home
    Assistant instance to verify the credentials._
 
-3. Try one of the example scripts. This script will connect to your Home Assistant instance, fetch all the available
-   entity states and print them.
+3. Try one of the example scripts. This script will connect to your Home
+   Assistant instance, fetch all the available entity states and print them.
 
    ```bash
    deno run --allow-net --allow-read https://raw.githubusercontent.com/balloob/home-assistant-deno/master/examples/print-entity-states.ts
@@ -31,7 +33,8 @@ _Experiment playing with Deno and how to organize a package._
    _This script needs network access to be able to connect to your Home
    Assistant instance._
 
-4. Now let's create a script ourselves. Create a new file `print-entity-states.ts` with content:
+4. Now let's create a script ourselves. Create a new file
+   `print-entity-states.ts` with content:
 
    ```ts
    import {
