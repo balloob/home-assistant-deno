@@ -1,6 +1,6 @@
 // Block until a trigger definition is triggered
 // deno run --allow-net --allow-read https://raw.githubusercontent.com/balloob/home-assistant-deno/master/examples/block-until-trigger.ts --trigger '{"platform":"state","entity_id":"light.office_lamp"}'
-import { parse } from "https://deno.land/std@0.54.0/flags/mod.ts";
+import { parse } from "https://deno.land/std@0.92.0/flags/mod.ts";
 import { getConnection } from "https://raw.githubusercontent.com/balloob/home-assistant-deno/master/mod.ts";
 
 const args = parse(Deno.args);
@@ -28,5 +28,5 @@ conn.subscribeMessage(
     type: "subscribe_trigger",
     trigger,
   },
-  null,
+  null
 );

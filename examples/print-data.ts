@@ -1,6 +1,6 @@
 // Print data
 // deno run --allow-net --allow-read https://raw.githubusercontent.com/balloob/home-assistant-deno/master/examples/print-data.ts --data area_registry
-import { parse } from "https://deno.land/std@0.54.0/flags/mod.ts";
+import { parse } from "https://deno.land/std@0.92.0/flags/mod.ts";
 import { getConnection } from "https://raw.githubusercontent.com/balloob/home-assistant-deno/master/mod.ts";
 
 const TYPES: { [key: string]: string } = {

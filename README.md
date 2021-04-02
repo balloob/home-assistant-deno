@@ -61,7 +61,7 @@ is a desired state.
 Create a new file called `block-until-state.ts` with content:
 
 ```ts
-import { parse } from "https://deno.land/std@0.54.0/flags/mod.ts";
+import { parse } from "https://deno.land/std@0.92.0/flags/mod.ts";
 import {
   getConnection,
   HassEntities,
@@ -100,7 +100,7 @@ In this example we're going to show how we can call services.
 Create a new file called `opposite-state.ts` with content:
 
 ```ts
-import { parse } from "https://deno.land/std@0.54.0/flags/mod.ts";
+import { parse } from "https://deno.land/std@0.92.0/flags/mod.ts";
 import {
   callService,
   getConnection,

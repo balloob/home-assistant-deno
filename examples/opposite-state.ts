@@ -1,7 +1,7 @@
 // Keep one entity in opposite state of one another
 // Works only with entities that are on/off.
 // deno run --allow-net --allow-read https://raw.githubusercontent.com/balloob/home-assistant-deno/master/examples/opposite-state.ts --from light.kitchen_lights --to light.bed_lights
-import { parse } from "https://deno.land/std@0.54.0/flags/mod.ts";
+import { parse } from "https://deno.land/std@0.92.0/flags/mod.ts";
 import {
   callService,
   getConnection,
