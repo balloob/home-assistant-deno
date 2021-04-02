@@ -28,5 +28,5 @@ conn.subscribeMessage(
     type: "subscribe_trigger",
     trigger,
   },
-  null
+  null,
 );

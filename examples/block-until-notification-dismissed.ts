@@ -3,9 +3,9 @@
 // Optionally pass --title "Title of notification"
 import { parse } from "https://deno.land/std@0.92.0/flags/mod.ts";
 import {
+  callService,
   getConnection,
   HassEntities,
-  callService,
   subscribeEntities,
 } from "https://raw.githubusercontent.com/balloob/home-assistant-deno/master/mod.ts";
 

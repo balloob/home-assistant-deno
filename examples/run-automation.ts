@@ -87,7 +87,7 @@ try {
       type: "subscribe_trigger",
       trigger: automation.trigger,
     },
-    null
+    null,
   );
 } catch (err) {
   console.error("Error setting up automation");
